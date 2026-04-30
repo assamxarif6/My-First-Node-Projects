@@ -1,0 +1,89 @@
+Project Overview
+This project demonstrates the implementation of **Control Flow** and **Conditional Logic** in JavaScript (Chapter 2). It simulates an automated banking decision engine that evaluates transaction eligibility based on account status, balance, and security protocols.
+
+#nLearning Objectives
+- **Conditional Statements:** Using `if`, `else if`, and `else` for decision branching.
+- **Logical Operators:** Implementing `&&` (AND), `||` (OR), and `!` (NOT) for complex validation.
+- **Switch Statements:** Categorizing data efficiently (e.g., Account Tiers).
+- **Truthiness & Falsiness:** Understanding how JS evaluates non-boolean values.
+
+# Technical Implementation
+The system processes a "Transaction Request" and determines:
+1. If the account has sufficient funds.
+2. If the transaction exceeds daily security limits.
+3. The transaction fee based on the user's account tier (Silver, Gold, Platinum).
+
+# How to Run
+1. Navigate to the project folder.
+2. Execute the script using Node.js:
+   ```bash
+   node decision_engine.js
+
+---
+
+## 2. The Implementation (`decision_engine.js`)
+
+```javascript
+/**
+ * CHAPTER 2 ASSIGNMENT: CONTROL FLOW & LOGIC
+ * Scenario: Automated Bank Transaction Validator
+ */
+
+// --- SECTION 1: SYSTEM STATE ---
+const accountOwner = "Muhammad Assam";
+const accountBalance = 12500.75;
+const accountType = "Gold"; // Options: Silver, Gold, Platinum
+const isAccountActive = true;
+const dailyLimit = 5000.00;
+
+// --- SECTION 2: TRANSACTION REQUEST ---
+let transactionAmount = 4200.00;
+let isInternational = false;
+
+console.log(`--- Processing Transaction for ${accountOwner} ---`);
+
+// --- SECTION 3: CONDITIONAL LOGIC (The Decision Engine) ---
+
+// Step 1: Security & Status Check
+if (!isAccountActive) {
+    console.log("REJECTED: Account is currently suspended.");
+} 
+// Step 2: Limit & Balance Validation
+else if (transactionAmount > accountBalance) {
+    console.log("REJECTED: Insufficient funds available.");
+} 
+else if (transactionAmount > dailyLimit) {
+    console.log("REJECTED: Amount exceeds your daily security limit.");
+} 
+// Step 3: Success Pathway
+else {
+    console.log("VALIDATED: Funds are available and security limits cleared.");
+    
+    // Nested Logic: Calculate Transaction Fees using Switch
+    let transactionFee = 0;
+
+    switch (accountType) {
+        case "Silver":
+            transactionFee = isInternational ? 25.00 : 5.00;
+            break;
+        case "Gold":
+            transactionFee = isInternational ? 15.00 : 2.00;
+            break;
+        case "Platinum":
+            transactionFee = 0; // VIP Tier: No fees
+            break;
+        default:
+            transactionFee = 10.00;
+    }
+
+    let finalDeduction = transactionAmount + transactionFee;
+    console.log(`Transaction Fee Applied (${accountType}): $${transactionFee}`);
+    console.log(`Total Amount to be Debited: $${finalDeduction.toFixed(2)}`);
+    console.log(`Remaining Balance: $${(accountBalance - finalDeduction).toFixed(2)}`);
+}
+
+// --- SECTION 4: LOGICAL OPERATOR DEMO ---
+// Checking for "VIP Quick Access" (Platinum or Balance > 50,000)
+if (accountType === "Platinum" || accountBalance > 50000) {
+    console.log("PRIORITY: This user qualifies for Priority Customer Support.");
+}
