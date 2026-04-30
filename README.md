@@ -1,23 +1,23 @@
 # My-First-Node-Projects
 JavaScript Foundations: User Profile & Financial Logic System
 
-## 📌 Project Overview
+#  Project Overview
 This project is a technical demonstration of JavaScript fundamentals covered in Chapter 1. It showcases the practical application of variable declaration, data type management, and basic arithmetic operations within a real-world context (Personal Finance Management).
 
-## 🎯 Learning Objectives
+# Learning Objectives
 - **Variable Scoping:** Implementing `const` for immutable data and `let` for mutable state.
 - **Data Structures:** Working with Primitive types (`String`, `Number`, `Boolean`).
 - **Template Literals:** Utilizing ES6 string interpolation for dynamic output.
 - **Arithmetic Logic:** Performing basic calculations to derive financial insights.
 
-## 🛠️ Technical Implementation
+# Technical Implementation
 The script simulates a user profile system that:
 1. Stores core user identity data.
 2. Processes monthly financial inflows and outflows.
 3. Calculates net savings and updates the total account balance.
 4. Outputs a formatted report to the console.
 
-## 🚀 How to Run
+#  How to Run
 1. Clone this repository.
 2. Ensure you have [Node.js](https://nodejs.org/) installed.
 3. Run the following command in your terminal:
